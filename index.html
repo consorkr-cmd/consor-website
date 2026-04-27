@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONSOR.</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0c0c;
+      --fg: #e8e8e8;
+      --mid: #666;
+      --subtle: #999;
+      --rule: #222;
+      --card: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, 'Pretendard Variable', Pretendard, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 14px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .logo img {
+      height: 22px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+
+    nav a:hover,
+    nav a.active { color: var(--fg); }
+
+    /* ─── INTRO ─── */
+    .intro {
+      padding: 72px 32px 56px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 860px;
+    }
+
+    .intro h1 {
+      font-size: clamp(32px, 5vw, 60px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .intro h1 span {
+      color: var(--mid);
+    }
+
+    /* ─── WORK GRID ─── */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 24px 32px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-header h2 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .section-header span {
+      font-size: 11px;
+      color: var(--mid);
+    }
+
+    .section-header .view-all {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+    .section-header .view-all:hover { color: var(--fg); }
+
+    .work-more {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
+      padding: 20px 24px;
+    }
+
+    .more-btn {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .more-btn:hover { color: var(--fg); border-color: var(--fg); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-left: 1px solid var(--rule);
+    }
+
+    .work-item {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: block;
+      overflow: hidden;
+    }
+
+    .work-item:hover .work-thumb img,
+    .work-item:hover .work-thumb .thumb-fill {
+      transform: scale(1.02);
+    }
+
+    .work-thumb {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .work-thumb img,
+    .work-thumb .thumb-fill {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Placeholder fills — dark muted color blocks */
+    .fill-1 { background: #1c1c2e; }
+    .fill-2 { background: #2a1f35; }
+    .fill-3 { background: #1a2a1f; }
+    .fill-4 { background: #2e2218; }
+    .fill-5 { background: #1a2030; }
+    .fill-6 { background: #281a1a; }
+    .fill-7 { background: #1e2818; }
+    .fill-8 { background: #28221a; }
+    .fill-9 { background: #1a2228; }
+
+    .thumb-label {
+      position: relative;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .thumb-brand {
+      font-size: clamp(16px, 2.5vw, 28px);
+      font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .thumb-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .work-meta {
+      padding: 14px 16px 16px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .work-meta .cat {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 5px;
+    }
+
+    .work-meta .title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--rule);
+    }
+
+    .about-left {
+      padding: 64px 32px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .about-left h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .about-left p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--subtle);
+      max-width: 460px;
+    }
+
+    .about-left p + p { margin-top: 18px; }
+
+    .about-right {
+      padding: 64px 32px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-bottom: 32px;
+    }
+
+    .stat {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+
+    .stat-n {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-l {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .about-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--fg);
+      padding-bottom: 3px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .about-cta:hover { color: var(--mid); border-color: var(--mid); }
+
+    /* ─── SERVICES ─── */
+    #services {
+      border-top: 1px solid var(--rule);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid var(--rule);
+    }
+
+    .service {
+      padding: 40px 28px 44px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .service-n {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 24px;
+    }
+
+    .service h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .service p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--subtle);
+    }
+
+    .service-items {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-items li {
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .service-items li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-left {
+      padding: 64px 32px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .contact-left h2 {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-row label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .contact-row a,
+    .contact-row span {
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .contact-row a:hover { color: var(--mid); }
+
+    .contact-right {
+      padding: 64px 32px;
+    }
+
+    .contact-right h3 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--rule);
+      padding: 16px 0;
+    }
+
+    .field label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg);
+      width: 100%;
+      appearance: none;
+    }
+
+    .field textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .field select option { background: var(--bg); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .form-row .field:first-child {
+      border-right: 1px solid var(--rule);
+      padding-right: 24px;
+    }
+
+    .form-row .field:last-child {
+      padding-left: 24px;
+    }
+
+    .submit-row {
+      padding-top: 28px;
+    }
+
+    button[type=submit] {
+      background: var(--fg);
+      color: var(--bg);
+      border: none;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button[type=submit]:hover { background: #bbb; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-mid {
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-right a {
+      font-size: 12px;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+
+    .footer-right a:hover { color: var(--fg); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      #about { grid-template-columns: 1fr; }
+      .about-left { border-right: none; border-bottom: 1px solid var(--rule); }
+      #contact { grid-template-columns: 1fr; }
+      .contact-left { border-right: none; border-bottom: 1px solid var(--rule); }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .intro { padding: 48px 20px 40px; }
+      .section-header { padding: 18px 20px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      #about, .about-left, .about-right,
+      #contact, .contact-left, .contact-right { padding: 40px 20px; }
+      footer { padding: 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-row .field:first-child { border-right: none; padding-right: 0; }
+      .form-row .field:last-child { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="logo"><img src="logo.png" alt="CONSOR."></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h1>We Grow Brands<br><span>That Grow Businesses.</span></h1>
+  </div>
+
+  <!-- WORK -->
+  <div id="work">
+    <div class="section-header">
+      <h2>Work</h2>
+      <a href="work.html" class="view-all">View All →</a>
+    </div>
+    <div class="work-grid">
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-1">
+            <div class="thumb-label">
+              <div class="thumb-brand">YOUONEJAE</div>
+              <div class="thumb-sub">Hot Spring Hotel</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">Hotel &amp; Hospitality</div>
+          <div class="title">유원재 — 온천 호텔 브랜딩</div>
+        </div>
+      </a>
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-2">
+            <div class="thumb-label">
+              <div class="thumb-brand">HAEUNDAE</div>
+              <div class="thumb-sub">Beach Resort</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">Real Estate</div>
+          <div class="title">해운대 — 비치 리조트 아이덴티티</div>
+        </div>
+      </a>
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-3">
+            <div class="thumb-label">
+              <div class="thumb-brand">kokja</div>
+              <div class="thumb-sub">Traditional Spirits</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">F&amp;B / Spirits</div>
+          <div class="title">곡자 — 전통주 브랜드 론칭</div>
+        </div>
+      </a>
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-4">
+            <div class="thumb-label">
+              <div class="thumb-brand">planit 147</div>
+              <div class="thumb-sub">Cosmetics</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">Beauty &amp; Cosmetics</div>
+          <div class="title">planit 147 — 화장품 브랜드 전략</div>
+        </div>
+      </a>
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-5">
+            <div class="thumb-label">
+              <div class="thumb-brand">ONE ACRE<br>FARM</div>
+              <div class="thumb-sub">Smart Farm</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">AgriTech / Food</div>
+          <div class="title">ONE ACRE FARM — 스마트팜 브랜딩</div>
+        </div>
+      </a>
+
+      <a href="#" class="work-item">
+        <div class="work-thumb">
+          <div class="thumb-fill fill-6">
+            <div class="thumb-label">
+              <div class="thumb-brand">PROJECT F</div>
+              <div class="thumb-sub">Lifestyle Brand</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="cat">Lifestyle / Retail</div>
+          <div class="title">Project F — 라이프스타일 브랜드 구축</div>
+        </div>
+      </a>
+
+    </div>
+    <div class="work-more">
+      <a href="work.html" class="more-btn">View All Work →</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about">
+    <div class="section-header" style="grid-column: 1/-1; border-bottom: 1px solid var(--rule);">
+      <h2>About</h2>
+    </div>
+    <div class="about-left">
+      <h2>브랜드 전략이<br>비즈니스를<br>바꿉니다.</h2>
+      <p>CONSOR는 다양한 분야의 전문가들이 모인 브랜드 컨설팅 컨소시엄입니다. 표면적인 디자인이 아닌, 비즈니스 성장을 이끄는 지속 가능한 브랜드 구조를 설계합니다.</p>
+      <p style="margin-top:18px">브랜드 전략 수립부터 아이덴티티 구축, 디지털 마케팅 실행까지 — 일관된 브랜드 경험이 실제 비즈니스 가치로 전환되도록 파트너로서 함께 합니다.</p>
+    </div>
+    <div class="about-right">
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-n">60+</div>
+          <div class="stat-l">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">8yr</div>
+          <div class="stat-l">Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">40+</div>
+          <div class="stat-l">Partners</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">3×</div>
+          <div class="stat-l">Avg. Growth</div>
+        </div>
+      </div>
+      <a href="#contact" class="about-cta">
+        Start a project →
+      </a>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services">
+    <div class="section-header">
+      <h2>Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-n">01</div>
+        <h3>Brand<br>Strategy</h3>
+        <p>시장 분석과 경쟁사 조사를 기반으로 차별화된 브랜드 포지셔닝 전략을 수립합니다.</p>
+        <ul class="service-items">
+          <li>Brand Audit</li>
+          <li>Competitive Analysis</li>
+          <li>Positioning Strategy</li>
+          <li>Brand Architecture</li>
+        </ul>
+      </div>
+      <div class="service">
+        <div class="service-n">02</div>
+        <h3>Brand<br>Identity</h3>
+        <p>로고, 컬러 시스템, 타이포그래피까지 브랜드의 일관된 시각적 아이덴티티를 구축합니다.</p>
+        <ul class="service-items">
+          <li>Logo Design</li>
+          <li>Visual System</li>
+          <li>Brand Guidelines</li>
+          <li>Asset Development</li>
+        </ul>
+      </div>
+      <div class="service">
+        <div class="service-n">03</div>
+        <h3>Digital<br>Marketing</h3>
+        <p>SNS, 콘텐츠 마케팅, 퍼포먼스 광고를 통해 브랜드 가치를 효과적으로 전달합니다.</p>
+        <ul class="service-items">
+          <li>Social Media</li>
+          <li>Content Strategy</li>
+          <li>Performance Ads</li>
+          <li>Campaign Planning</li>
+        </ul>
+      </div>
+      <div class="service">
+        <div class="service-n">04</div>
+        <h3>Brand<br>Partnership</h3>
+        <p>장기적인 브랜드 파트너로서 지속적인 성장을 위한 전략적 협력 관계를 구축합니다.</p>
+        <ul class="service-items">
+          <li>Retainer Consulting</li>
+          <li>Growth Strategy</li>
+          <li>Brand Management</li>
+          <li>Ongoing Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="section-header" style="grid-column: 1/-1; border-bottom: 1px solid var(--rule);">
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-left">
+      <h2>함께<br>성장할<br>준비가<br>되셨나요?</h2>
+      <div class="contact-info">
+        <div class="contact-row">
+          <label>Phone</label>
+          <a href="tel:+821063384857">010-6338-4857</a>
+        </div>
+        <div class="contact-row">
+          <label>Email</label>
+          <a href="mailto:consor.kr@gmail.com">consor.kr@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <label>Instagram</label>
+          <a href="https://instagram.com/consor.kr" target="_blank">@consor.kr</a>
+        </div>
+        <div class="contact-row">
+          <label>Location</label>
+          <span>Seoul, Korea</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>Send a Message</h3>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="홍길동" required>
+          </div>
+          <div class="field">
+            <label>Company</label>
+            <input type="text" placeholder="회사명">
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" placeholder="hello@brand.com" required>
+        </div>
+        <div class="field">
+          <label>Service</label>
+          <select>
+            <option value="">선택해주세요</option>
+            <option>Brand Strategy</option>
+            <option>Brand Identity</option>
+            <option>Digital Marketing</option>
+            <option>Brand Partnership</option>
+            <option>기타 문의</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea placeholder="브랜드에 대해 간략히 알려주세요..." required></textarea>
+        </div>
+        <div class="submit-row">
+          <button type="submit" id="submitBtn">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="logo.png" alt="CONSOR."></div>
+    <div class="footer-mid">© 2025 CONSOR. All rights reserved.</div>
+    <div class="footer-right">
+      <a href="https://instagram.com/consor.kr" target="_blank">Instagram</a>
+      <a href="mailto:consor.kr@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Active nav on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#2a6e47';
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

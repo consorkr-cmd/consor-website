@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — CONSOR.</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0c0c;
+      --fg: #e8e8e8;
+      --mid: #666;
+      --subtle: #999;
+      --rule: #222;
+      --card: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, 'Pretendard Variable', Pretendard, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 14px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .logo img {
+      height: 22px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--fg); }
+    nav a.active { color: var(--fg); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 24px 32px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-header h1 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* ─── FILTER ─── */
+    .filters {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--rule);
+      padding: 0 32px;
+      overflow-x: auto;
+    }
+
+    .filter-btn {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      padding: 14px 20px 13px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover { color: var(--fg); }
+    .filter-btn.active { color: var(--fg); border-bottom-color: var(--fg); }
+
+    /* ─── GRID ─── */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid var(--rule);
+    }
+
+    .work-item {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: block;
+      overflow: hidden;
+    }
+
+    .work-item.hidden { display: none; }
+
+    .work-item:hover .thumb-fill {
+      transform: scale(1.02);
+    }
+
+    .work-thumb {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .thumb-fill {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .fill-1  { background: #1c1c2e; }
+    .fill-2  { background: #2a1f35; }
+    .fill-3  { background: #1a2a1f; }
+    .fill-4  { background: #2e2218; }
+    .fill-5  { background: #1a2030; }
+    .fill-6  { background: #281a1a; }
+    .fill-7  { background: #1e2818; }
+    .fill-8  { background: #28221a; }
+    .fill-9  { background: #1a2228; }
+    .fill-10 { background: #2a2018; }
+    .fill-11 { background: #1a1e2a; }
+    .fill-12 { background: #221a28; }
+
+    .thumb-label {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    .thumb-brand {
+      font-size: clamp(13px, 1.8vw, 22px);
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+
+    .thumb-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .work-meta {
+      padding: 12px 14px 14px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .work-meta .cat {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 4px;
+    }
+
+    .work-meta .title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-mid { font-size: 12px; color: var(--mid); }
+
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a {
+      font-size: 12px;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+    .footer-right a:hover { color: var(--fg); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .work-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      header { padding: 0 20px; }
+      .page-header { padding: 18px 20px; }
+      .filters { padding: 0 20px; }
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { padding: 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .work-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo"><img src="logo.png" alt="CONSOR."></a>
+    <nav>
+      <a href="work.html" class="active">Work</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="page-header">
+    <h1>Work — All Projects</h1>
+    <span style="font-size:11px;color:var(--mid);" id="count"></span>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="hospitality">Hospitality</button>
+    <button class="filter-btn" data-filter="fb">F&amp;B</button>
+    <button class="filter-btn" data-filter="beauty">Beauty</button>
+    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+    <button class="filter-btn" data-filter="culture">Culture</button>
+  </div>
+
+  <div class="work-grid" id="grid">
+
+    <a href="#" class="work-item" data-cat="hospitality">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-1">
+          <div class="thumb-label">
+            <div class="thumb-brand">YOUONEJAE</div>
+            <div class="thumb-sub">Hot Spring Hotel</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Hotel &amp; Hospitality</div>
+        <div class="title">유원재 — 온천 호텔 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="hospitality">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-2">
+          <div class="thumb-label">
+            <div class="thumb-brand">HAEUNDAE</div>
+            <div class="thumb-sub">Beach Resort</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Real Estate</div>
+        <div class="title">해운대 — 비치 리조트 아이덴티티</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="fb">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-3">
+          <div class="thumb-label">
+            <div class="thumb-brand">kokja</div>
+            <div class="thumb-sub">Traditional Spirits</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">F&amp;B / Spirits</div>
+        <div class="title">곡자 — 전통주 브랜드 론칭</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="beauty">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-4">
+          <div class="thumb-label">
+            <div class="thumb-brand">planit 147</div>
+            <div class="thumb-sub">Cosmetics</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Beauty &amp; Cosmetics</div>
+        <div class="title">planit 147 — 화장품 브랜드 전략</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="lifestyle">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-5">
+          <div class="thumb-label">
+            <div class="thumb-brand">ONE ACRE<br>FARM</div>
+            <div class="thumb-sub">Smart Farm</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">AgriTech / Food</div>
+        <div class="title">ONE ACRE FARM — 스마트팜 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="lifestyle">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-6">
+          <div class="thumb-label">
+            <div class="thumb-brand">PROJECT F</div>
+            <div class="thumb-sub">Lifestyle Brand</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Lifestyle / Retail</div>
+        <div class="title">Project F — 라이프스타일 브랜드 구축</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="culture">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-7">
+          <div class="thumb-label">
+            <div class="thumb-brand">HANOK+</div>
+            <div class="thumb-sub">Cultural Heritage</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Culture &amp; Heritage</div>
+        <div class="title">한옥+ — 전통 문화 공간 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="lifestyle">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-8">
+          <div class="thumb-label">
+            <div class="thumb-brand">SOOM</div>
+            <div class="thumb-sub">Wellness</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Wellness</div>
+        <div class="title">숨 — 웰니스 브랜드 아이덴티티</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="fb">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-9">
+          <div class="thumb-label">
+            <div class="thumb-brand">BORA</div>
+            <div class="thumb-sub">Café &amp; Dessert</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">F&amp;B / Café</div>
+        <div class="title">보라 — 디저트 카페 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="hospitality">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-10">
+          <div class="thumb-label">
+            <div class="thumb-brand">SEORAK</div>
+            <div class="thumb-sub">Mountain Resort</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Hotel &amp; Hospitality</div>
+        <div class="title">설악 — 마운틴 리조트 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="beauty">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-11">
+          <div class="thumb-label">
+            <div class="thumb-brand">SOIL</div>
+            <div class="thumb-sub">Skincare</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Beauty / Skincare</div>
+        <div class="title">소일 — 자연주의 스킨케어 브랜딩</div>
+      </div>
+    </a>
+
+    <a href="#" class="work-item" data-cat="culture">
+      <div class="work-thumb">
+        <div class="thumb-fill fill-12">
+          <div class="thumb-label">
+            <div class="thumb-brand">JANGDO</div>
+            <div class="thumb-sub">Craft Museum</div>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <div class="cat">Culture / Museum</div>
+        <div class="title">장도 — 공예 뮤지엄 아이덴티티</div>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo"><img src="logo.png" alt="CONSOR."></a>
+    <div class="footer-mid">© 2025 CONSOR. All rights reserved.</div>
+    <div class="footer-right">
+      <a href="https://instagram.com/consor.kr" target="_blank">Instagram</a>
+      <a href="mailto:consor.kr@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.work-item');
+    const btns = document.querySelectorAll('.filter-btn');
+    const countEl = document.getElementById('count');
+
+    function updateCount() {
+      const visible = document.querySelectorAll('.work-item:not(.hidden)').length;
+      countEl.textContent = visible + ' projects';
+    }
+
+    updateCount();
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const f = btn.dataset.filter;
+        items.forEach(item => {
+          if (f === 'all' || item.dataset.cat === f) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        updateCount();
+      });
+    });
+  </script>
+
+</body>
+</html>
