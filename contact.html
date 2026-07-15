@@ -371,26 +371,40 @@
   </footer>
 
   <script>
+    function showToast(msg, ok){
+      var t=document.createElement('div');
+      t.textContent=msg;
+      t.style.cssText='position:fixed;left:50%;bottom:40px;transform:translateX(-50%) translateY(20px);'
+        +'background:'+(ok?'#121a15':'#1f1212')+';color:#e8e8e8;'
+        +'border:1px solid '+(ok?'#2a6e47':'#8a2a2a')+';border-left:3px solid '+(ok?'#37a866':'#c0392b')+';'
+        +'padding:16px 24px;border-radius:10px;font-size:14px;font-weight:500;letter-spacing:-0.01em;'
+        +'z-index:9999;opacity:0;box-shadow:0 10px 40px rgba(0,0,0,0.55);'
+        +'transition:opacity .35s ease, transform .35s cubic-bezier(0.16,1,0.3,1);max-width:90%;';
+      document.body.appendChild(t);
+      requestAnimationFrame(function(){ t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
+      setTimeout(function(){ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)';
+        setTimeout(function(){ t.remove(); }, 400); }, 5000);
+    }
     function handleSubmit(e) {
       e.preventDefault();
-      const form = e.target;
-      const btn = document.getElementById('submitBtn');
+      var form = e.target;
+      var btn = document.getElementById('submitBtn');
       btn.textContent = 'Sending...';
+      btn.disabled = true;
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
-      }).then(() => {
+      }).then(function(){
         btn.textContent = 'Sent ✓';
         btn.style.background = '#2a6e47';
-        setTimeout(() => {
-          btn.textContent = 'Send Message';
-          btn.style.background = '';
-          form.reset();
-        }, 3000);
-      }).catch(() => {
-        btn.textContent = 'Error — email us';
-        btn.style.background = '#8a2a2a';
+        showToast('✓  문의가 정상적으로 접수되었어요. 빠른 시일 내 연락드릴게요.', true);
+        form.reset();
+        setTimeout(function(){ btn.textContent='Send Message'; btn.style.background=''; btn.disabled=false; }, 4000);
+      }).catch(function(){
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        showToast('전송에 실패했어요. consor.kr@gmail.com 으로 보내주세요.', false);
       });
     }
   </script>
