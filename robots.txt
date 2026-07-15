@@ -1,0 +1,8 @@
+# robots.txt — CONSOR. (컨소)
+# 모든 검색엔진 및 AI 답변엔진 크롤러의 콘텐츠 수집을 허용합니다.
+# AI/LLM 요약용 안내 파일: https://consor.kr/llms.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://consor.kr/sitemap.xml

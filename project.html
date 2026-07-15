@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-site-verification" content="DyD5O41wBVO8D07su83aHPH9T5HuQV53DAi2iuATPw4" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TC2RN7FR');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5P1NW4DBP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L5P1NW4DBP');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Project — CONSOR.</title>
+  <link rel="canonical" id="canonical-link" href="https://consor.kr/work">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CONSOR.">
+  <meta property="og:title" id="og-title" content="CONSOR. Project">
+  <meta property="og:description" id="og-desc" content="CONSOR. 브랜드·공간 프로젝트">
+  <meta property="og:url" id="og-url" content="https://consor.kr/work">
+  <meta property="og:image" id="og-image" content="https://consor.kr/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" id="tw-title" content="CONSOR. Project">
+  <meta name="twitter:description" id="tw-desc" content="CONSOR. 브랜드·공간 프로젝트">
+  <meta name="twitter:image" content="https://consor.kr/og-image.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0c0c;
+      --fg: #e8e8e8;
+      --mid: #666;
+      --subtle: #999;
+      --rule: #222;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, 'Pretendard Variable', Pretendard, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 14px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      height: 52px;
+    }
+
+    .logo img {
+      height: 22px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    .back-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.07em;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* ─── HERO ─── */
+    .project-hero {
+      padding: 80px 40px 64px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 40px;
+    }
+
+    .project-title-en {
+      font-size: clamp(44px, 8vw, 112px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      word-break: keep-all;
+    }
+
+    .project-title-kr {
+      font-size: clamp(16px, 2vw, 26px);
+      font-weight: 400;
+      color: var(--mid);
+      letter-spacing: -0.02em;
+      margin-bottom: 56px;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* ─── DESC ─── */
+    .project-desc {
+      padding: 48px 40px 56px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 760px;
+    }
+
+    .project-desc p {
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.8;
+      color: var(--subtle);
+      letter-spacing: -0.03em;
+    }
+
+    /* ─── IMAGES ─── */
+    .project-images {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .img-block {
+      overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .img-block:last-child { border-bottom: none; }
+
+    .img-block img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .img-fill {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    /* ─── BOTTOM NAV ─── */
+    .project-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    .project-nav a:hover { color: var(--fg); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      display: block;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+    }
+
+    .footer-mid { font-size: 12px; color: var(--mid); }
+
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a {
+      font-size: 12px;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+    .footer-right a:hover { color: var(--fg); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .project-hero { padding: 48px 20px 40px; }
+      .project-meta { gap: 28px; flex-direction: column; }
+      .project-desc { padding: 36px 20px 44px; }
+      .project-nav { padding: 24px 20px; }
+      footer { padding: 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1536643854771269');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1536643854771269&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC2RN7FR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header>
+    <a href="index.html" class="logo"><img src="logo.png" alt="CONSOR."></a>
+    <nav style="display:flex;gap:32px;">
+      <a href="work.html" style="font-size:13px;font-weight:500;color:var(--mid);letter-spacing:0.07em;transition:color 0.15s;" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--mid)'">Work</a>
+      <a href="about.html" style="font-size:13px;font-weight:500;color:var(--mid);letter-spacing:0.07em;transition:color 0.15s;" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--mid)'">About</a>
+      <a href="contact.html" style="font-size:13px;font-weight:500;color:var(--mid);letter-spacing:0.07em;transition:color 0.15s;" onmouseover="this.style.color='var(--fg)'" onmouseout="this.style.color='var(--mid)'">Contact</a>
+    </nav>
+  </header>
+
+  <div id="project-content"></div>
+
+  <footer>
+    <div class="footer-logo"><img src="logo.png" alt="CONSOR."></div>
+    <div class="footer-mid">© 2025 CONSOR. All rights reserved.</div>
+    <div class="footer-right">
+      <a href="https://instagram.com/consor.kr" target="_blank">Instagram</a>
+      <a href="mailto:consor.kr@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const project = PROJECTS[id];
+
+    if (!project) {
+      window.location.href = 'work.html';
+    } else {
+      // SEO: title
+      document.title = project.seoTitle || (project.titleEn + ' — CONSOR.');
+
+      // SEO: meta description
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.content = project.seoDesc || project.desc || '';
+      // SEO: canonical + OG (프로젝트별 동적)
+      var _u = 'https://consor.kr/project?id=' + id;
+      var _t = project.seoTitle || (project.titleEn + ' — CONSOR.');
+      var _d = project.seoDesc || project.desc || '';
+      var _img = (project.images && project.images.length)
+                 ? 'https://consor.kr/' + project.images[0]
+                 : 'https://consor.kr/og-image.png';
+      var _set = function(id2, attr, val){ var el=document.getElementById(id2); if(el) el.setAttribute(attr, val); };
+      _set('canonical-link','href',_u);
+      _set('og-url','content',_u);
+      _set('og-title','content',_t);   _set('tw-title','content',_t);
+      _set('og-desc','content',_d);     _set('tw-desc','content',_d);
+      _set('og-image','content',_img);
+
+      const imagesHtml = project.images && project.images.length > 0
+        ? project.images.map(src => `
+          <div class="img-block">
+            <img src="${src}" alt="${project.titleEn}">
+          </div>`).join('')
+        : `<div class="img-block">
+            <div class="img-fill" style="background:${project.fill}"></div>
+          </div>`;
+
+      const ids = Object.keys(PROJECTS);
+      const currentIndex = ids.indexOf(id);
+      const nextId = ids[currentIndex + 1];
+      const prevId = ids[currentIndex - 1];
+
+      const navHtml = `
+        ${prevId ? `<a href="project.html?id=${prevId}">← ${PROJECTS[prevId].titleEn}</a>` : '<span></span>'}
+        ${nextId ? `<a href="project.html?id=${nextId}">${PROJECTS[nextId].titleEn} →</a>` : '<span></span>'}
+      `;
+
+      document.getElementById('project-content').innerHTML = `
+        <div class="project-hero">
+          <div class="project-eyebrow">Work</div>
+          <h1 class="project-title-en">${project.titleEn}</h1>
+          <h2 class="project-title-kr">${project.titleKr}</h2>
+          <div class="project-meta">
+            <div class="meta-item">
+              <span class="meta-label">기간</span>
+              <span class="meta-value">${project.period}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">업무스콥</span>
+              <span class="meta-value">${project.scope}</span>
+            </div>
+          </div>
+        </div>
+
+        ${project.desc ? `<div class="project-desc"><p>${project.desc}</p></div>` : ''}
+
+        <div class="project-images">${imagesHtml}</div>
+
+        <div class="project-nav">${navHtml}</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

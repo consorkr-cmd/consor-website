@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <meta name="google-site-verification" content="DyD5O41wBVO8D07su83aHPH9T5HuQV53DAi2iuATPw4" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TC2RN7FR');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5P1NW4DBP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L5P1NW4DBP');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work — CONSOR.</title>
+  <title>Work | 브랜드 마케팅 · 공간 브랜딩 포트폴리오 — CONSOR.</title>
+  <link rel="canonical" href="https://consor.kr/work">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CONSOR.">
+  <meta property="og:url" content="https://consor.kr/work">
+  <meta property="og:title" content="Work | 브랜드 마케팅 · 공간 브랜딩 포트폴리오 — CONSOR.">
+  <meta property="og:description" content="유원재, 해운대비치, 한국콜마, 곡자, 원에이커팜 등 CONSOR.의 브랜드·공간 프로젝트 포트폴리오.">
+  <meta property="og:image" content="https://consor.kr/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Work | 브랜드 마케팅 · 공간 브랜딩 포트폴리오 — CONSOR.">
+  <meta name="twitter:description" content="유원재, 해운대비치, 한국콜마, 곡자, 원에이커팜 등 CONSOR.의 브랜드·공간 프로젝트 포트폴리오.">
+  <meta name="twitter:image" content="https://consor.kr/og-image.png">
+  <meta name="description" content="브랜드 전략 기획, 공간 브랜딩, 공간경험 기획, 브랜드 콘텐츠 마케팅 등 CONSOR.의 프로젝트 포트폴리오. 유원재, 해운대비치, 한국콜마, 어뮤즈 등 다양한 브랜드와 함께했습니다.">
+  <meta name="keywords" content="브랜드 전략 기획, 공간 브랜딩, 공간경험 기획, 브랜드 마케팅, 브랜드 콘텐츠 마케팅, 공간 브랜드 개발, 브랜드 포트폴리오">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,6 +94,7 @@
       font-size: 13px;
       font-weight: 500;
       color: var(--mid);
+      letter-spacing: 0.07em;
       transition: color 0.15s;
     }
 
@@ -75,9 +105,10 @@
     .page-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      padding: 24px 32px 20px;
+      align-items: center;
+      padding: 0 32px;
       border-bottom: 1px solid var(--rule);
+      height: 48px;
     }
 
     .page-header h1 {
@@ -88,37 +119,48 @@
       color: var(--mid);
     }
 
-    /* ─── FILTER ─── */
-    .filters {
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
       display: flex;
-      gap: 0;
       border-bottom: 1px solid var(--rule);
-      padding: 0 32px;
-      overflow-x: auto;
     }
 
     .filter-btn {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--mid);
-      padding: 14px 20px 13px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      letter-spacing: 0.06em;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-      white-space: nowrap;
       font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      background: none;
+      border: none;
+      border-right: 1px solid var(--rule);
+      padding: 14px 28px;
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+      position: relative;
     }
 
     .filter-btn:hover { color: var(--fg); }
-    .filter-btn.active { color: var(--fg); border-bottom-color: var(--fg); }
+
+    .filter-btn.active {
+      color: var(--fg);
+    }
+
+    .filter-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--fg);
+    }
 
     /* ─── GRID ─── */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       border-left: 1px solid var(--rule);
     }
 
@@ -127,85 +169,91 @@
       border-bottom: 1px solid var(--rule);
       display: block;
       overflow: hidden;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
-    .work-item.hidden { display: none; }
+    .work-item.hidden {
+      display: none;
+    }
 
-    .work-item:hover .thumb-fill {
-      transform: scale(1.02);
+    .work-item:hover .slide {
+      transform: scale(1.03);
     }
 
     .work-thumb {
-      aspect-ratio: 4/3;
+      aspect-ratio: 3/2;
       overflow: hidden;
       background: var(--card);
+      position: relative;
     }
 
-    .thumb-fill {
+    .slide-wrap {
+      position: relative;
       width: 100%;
       height: 100%;
-      display: block;
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .fill-1  { background: #1c1c2e; }
-    .fill-2  { background: #2a1f35; }
-    .fill-3  { background: #1a2a1f; }
-    .fill-4  { background: #2e2218; }
-    .fill-5  { background: #1a2030; }
-    .fill-6  { background: #281a1a; }
-    .fill-7  { background: #1e2818; }
-    .fill-8  { background: #28221a; }
-    .fill-9  { background: #1a2228; }
-    .fill-10 { background: #2a2018; }
-    .fill-11 { background: #1a1e2a; }
-    .fill-12 { background: #221a28; }
-
-    .thumb-label {
+    .slide {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      padding: 16px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .thumb-brand {
-      font-size: clamp(13px, 1.8vw, 22px);
-      font-weight: 700;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.01em;
-      line-height: 1.1;
-    }
+    .slide.active { opacity: 1; }
 
-    .thumb-sub {
-      font-size: 10px;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 5px;
-    }
+    .fill-1  { background: #161616; }
+    .fill-2  { background: #1a1a1a; }
+    .fill-3  { background: #181818; }
+    .fill-4  { background: #171717; }
+    .fill-5  { background: #191919; }
+    .fill-6  { background: #151515; }
+    .fill-7  { background: #1c1c1c; }
+    .fill-8  { background: #141414; }
+    .fill-9  { background: #131313; }
 
     .work-meta {
-      padding: 12px 14px 14px;
+      padding: 14px 16px 16px;
       border-top: 1px solid var(--rule);
     }
 
-    .work-meta .cat {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 4px;
+    .work-meta .title-en {
+      font-size: clamp(15px, 1.6vw, 22px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 5px;
     }
 
-    .work-meta .title {
-      font-size: 13px;
+    .work-meta .title-kr {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .work-meta .desc {
+      font-size: 11px;
+      line-height: 1.65;
+      color: var(--subtle);
+      letter-spacing: -0.02em;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 9px;
       font-weight: 600;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border: 1px solid var(--rule);
+      padding: 3px 8px;
+      margin-bottom: 8px;
     }
 
     /* ─── FOOTER ─── */
@@ -234,14 +282,9 @@
     .footer-right a:hover { color: var(--fg); }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 1100px) {
-      .work-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
     @media (max-width: 760px) {
       header { padding: 0 20px; }
-      .page-header { padding: 18px 20px; }
-      .filters { padding: 0 20px; }
+      .page-header { padding: 0 20px; }
       .work-grid { grid-template-columns: repeat(2, 1fr); }
       footer { padding: 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
     }
@@ -250,212 +293,232 @@
       .work-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1536643854771269');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1536643854771269&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC2RN7FR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <header>
     <a href="index.html" class="logo"><img src="logo.png" alt="CONSOR."></a>
     <nav>
       <a href="work.html" class="active">Work</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <div class="page-header">
-    <h1>Work — All Projects</h1>
+    <h1>Work</h1>
     <span style="font-size:11px;color:var(--mid);" id="count"></span>
   </div>
 
-  <div class="filters">
+  <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="hospitality">Hospitality</button>
-    <button class="filter-btn" data-filter="fb">F&amp;B</button>
-    <button class="filter-btn" data-filter="beauty">Beauty</button>
-    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
-    <button class="filter-btn" data-filter="culture">Culture</button>
+    <button class="filter-btn" data-filter="space">Space</button>
+    <button class="filter-btn" data-filter="brand">Brand</button>
   </div>
 
   <div class="work-grid" id="grid">
 
-    <a href="#" class="work-item" data-cat="hospitality">
+    <a href="project.html?id=youonejae-1" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-1">
-          <div class="thumb-label">
-            <div class="thumb-brand">YOUONEJAE</div>
-            <div class="thumb-sub">Hot Spring Hotel</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/youonejae-1.jpg" class="slide active" alt="YOUONEJAE">
+          <img src="images/youonejae-2.jpg" class="slide" alt="">
+          <img src="images/youonejae-3.jpg" class="slide" alt="">
+          <img src="images/youonejae-4.jpg" class="slide" alt="">
+          <img src="images/youonejae-5.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Hotel &amp; Hospitality</div>
-        <div class="title">유원재 — 온천 호텔 브랜딩</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">YOUONEJAE — 1</div>
+        <div class="title-kr">유원재 온천호텔 브랜드 및 고객경험 기획</div>
+        <div class="desc">충주 수안보에 위치한 유원재 온천호텔의 브랜드 전략, 아이덴티티와 고객 경험을 기획함</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="hospitality">
+    <a href="project.html?id=youonejae-2" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-2">
-          <div class="thumb-label">
-            <div class="thumb-brand">HAEUNDAE</div>
-            <div class="thumb-sub">Beach Resort</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/youonejae2-1.jpg" class="slide active" alt="YOUONEJAE 2">
+          <img src="images/youonejae2-2.jpg" class="slide" alt="">
+          <img src="images/youonejae2-3.jpg" class="slide" alt="">
+          <img src="images/youonejae2-4.jpg" class="slide" alt="">
+          <img src="images/youonejae2-5.jpg" class="slide" alt="">
+          <img src="images/youonejae2-6.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Real Estate</div>
-        <div class="title">해운대 — 비치 리조트 아이덴티티</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">YOUONEJAE — 2</div>
+        <div class="title-kr">유원재 온천호텔 브랜드 마케팅</div>
+        <div class="desc">설계된 유원재의 브랜드 가치체계를 기반으로 한 브랜드 마케팅 실행</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="fb">
+    <a href="project.html?id=haeundae" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-3">
-          <div class="thumb-label">
-            <div class="thumb-brand">kokja</div>
-            <div class="thumb-sub">Traditional Spirits</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/restfield-1.jpg" class="slide active" alt="Haeundae Beach REST FEILD">
+          <img src="images/restfield-2.jpeg" class="slide" alt="">
+          <img src="images/restfield-3.jpg" class="slide" alt="">
+          <img src="images/restfield-4.jpg" class="slide" alt="">
+          <img src="images/restfield-5.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">F&amp;B / Spirits</div>
-        <div class="title">곡자 — 전통주 브랜드 론칭</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">Haeundae Beach REST FEILD</div>
+        <div class="title-kr">해운대비치 레스트필드</div>
+        <div class="desc">해운대비치 레스트필드의 브랜드 가치체계 및 USP 정립, 브랜드 마케팅 실행</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="beauty">
+    <a href="project.html?id=haeundae-brand" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-4">
-          <div class="thumb-label">
-            <div class="thumb-brand">planit 147</div>
-            <div class="thumb-sub">Cosmetics</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/hb-1.jpg" class="slide active" alt="Haeundae Beach">
+          <img src="images/hb-2.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Beauty &amp; Cosmetics</div>
-        <div class="title">planit 147 — 화장품 브랜드 전략</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">Haeundae Beach</div>
+        <div class="title-kr">해운대비치 통합 브랜드 구축</div>
+        <div class="desc">해운대비치 3개 부지를 아우르는 통합 브랜드 체계를 구축하고 각 상품별 USP와 브랜드 자산을 개발</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="lifestyle">
+    <a href="project.html?id=planit147" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-5">
-          <div class="thumb-label">
-            <div class="thumb-brand">ONE ACRE<br>FARM</div>
-            <div class="thumb-sub">Smart Farm</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/planit147-1.jpg" class="slide active" alt="Kolmar planit 147">
+          <img src="images/planit147-2.jpg" class="slide" alt="">
+          <img src="images/planit147-3.jpg" class="slide" alt="">
+          <img src="images/planit147-4.jpg" class="slide" alt="">
+          <img src="images/planit147-5.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">AgriTech / Food</div>
-        <div class="title">ONE ACRE FARM — 스마트팜 브랜딩</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">Kolmar planit 147</div>
+        <div class="title-kr">한국콜마 Planit 147</div>
+        <div class="desc">한국콜마에서 새롭게 선보이는 뷰티 브랜드 인큐베이팅 공간의 고객 경험과 서비스를 기획 및 구현</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="lifestyle">
+    <a href="project.html?id=kokja" class="work-item" data-category="brand">
       <div class="work-thumb">
-        <div class="thumb-fill fill-6">
-          <div class="thumb-label">
-            <div class="thumb-brand">PROJECT F</div>
-            <div class="thumb-sub">Lifestyle Brand</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/kokja-1.jpg" class="slide active" alt="kokja">
+          <img src="images/kokja-2.jpg" class="slide" alt="">
+          <img src="images/kokja-3.jpg" class="slide" alt="">
+          <img src="images/kokja-4.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Lifestyle / Retail</div>
-        <div class="title">Project F — 라이프스타일 브랜드 구축</div>
+        <div class="category-tag">Brand</div>
+        <div class="title-en">kokja</div>
+        <div class="title-kr">곡자</div>
+        <div class="desc">장인에게 전수받은 다채로운 풍미의 우리 술 브랜드 곡자의 브랜드 기획과 브랜드 자산 개발 매니지먼트</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="culture">
+    <a href="project.html?id=oneacrefarm" class="work-item" data-category="brand">
       <div class="work-thumb">
-        <div class="thumb-fill fill-7">
-          <div class="thumb-label">
-            <div class="thumb-brand">HANOK+</div>
-            <div class="thumb-sub">Cultural Heritage</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/oaf-1.jpg" class="slide active" alt="ONE ACRE FARM">
+          <img src="images/oaf-2.jpg" class="slide" alt="">
+          <img src="images/oaf-3.jpg" class="slide" alt="">
+          <img src="images/oaf-4.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Culture &amp; Heritage</div>
-        <div class="title">한옥+ — 전통 문화 공간 브랜딩</div>
+        <div class="category-tag">Brand</div>
+        <div class="title-en">ONE ACRE FARM</div>
+        <div class="title-kr">원에이커팜</div>
+        <div class="desc">스마트팜 기반의 채소 브랜드 원에이커팜의 브랜드 기획, 브랜드 자산 개발 매니지먼트, 브랜드 마케팅 제언</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="lifestyle">
+    <a href="project.html?id=beartreepark" class="work-item" data-category="space">
       <div class="work-thumb">
-        <div class="thumb-fill fill-8">
-          <div class="thumb-label">
-            <div class="thumb-brand">SOOM</div>
-            <div class="thumb-sub">Wellness</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/bear-1.jpg" class="slide active" alt="Beartree Park Season Marketing">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Wellness</div>
-        <div class="title">숨 — 웰니스 브랜드 아이덴티티</div>
+        <div class="category-tag">Space</div>
+        <div class="title-en">Beartree Park Season Marketing</div>
+        <div class="title-kr">베어트리파크 시즌 마케팅</div>
+        <div class="desc">베어트리파크 크리스마스 시즌 컨텐츠, 바이럴 마케팅 실행을 통한 매출 증대기여</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="fb">
+    <a href="project.html?id=mondaycereal" class="work-item" data-category="brand">
       <div class="work-thumb">
-        <div class="thumb-fill fill-9">
-          <div class="thumb-label">
-            <div class="thumb-brand">BORA</div>
-            <div class="thumb-sub">Café &amp; Dessert</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/MRL-1.png" class="slide active" alt="MONDAY CEREAL">
+          <img src="images/MRL-2.jpg" class="slide" alt="">
+          <img src="images/MRL-3.jpg" class="slide" alt="">
+          <img src="images/MRL-4.jpg" class="slide" alt="">
+          <img src="images/MRL-5.jpg" class="slide" alt="">
+          <img src="images/MRL-6.jpg" class="slide" alt="">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">F&amp;B / Café</div>
-        <div class="title">보라 — 디저트 카페 브랜딩</div>
+        <div class="category-tag">Brand</div>
+        <div class="title-en">MONDAY CEREAL</div>
+        <div class="title-kr">먼데이시리얼</div>
+        <div class="desc">심미성과 기능성을 아우르는 아동 의류 및 용품 브랜드 — PB 브랜드</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="hospitality">
+    <a href="project.html?id=serybox" class="work-item" data-category="brand">
       <div class="work-thumb">
-        <div class="thumb-fill fill-10">
-          <div class="thumb-label">
-            <div class="thumb-brand">SEORAK</div>
-            <div class="thumb-sub">Mountain Resort</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/sery-1.jpg" class="slide active" alt="SERY BOX">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Hotel &amp; Hospitality</div>
-        <div class="title">설악 — 마운틴 리조트 브랜딩</div>
+        <div class="category-tag">Brand</div>
+        <div class="title-en">SERY BOX</div>
+        <div class="title-kr">세리박스 리브랜딩</div>
+        <div class="desc">세리박스의 브랜드 리뉴얼 및 브랜드 자산 개발 매니지먼트</div>
       </div>
     </a>
 
-    <a href="#" class="work-item" data-cat="beauty">
+    <a href="project.html?id=amuse" class="work-item" data-category="brand">
       <div class="work-thumb">
-        <div class="thumb-fill fill-11">
-          <div class="thumb-label">
-            <div class="thumb-brand">SOIL</div>
-            <div class="thumb-sub">Skincare</div>
-          </div>
+        <div class="slide-wrap">
+          <img src="images/amuse-1.png" class="slide active" alt="AMUSE Rebranding">
         </div>
       </div>
       <div class="work-meta">
-        <div class="cat">Beauty / Skincare</div>
-        <div class="title">소일 — 자연주의 스킨케어 브랜딩</div>
-      </div>
-    </a>
-
-    <a href="#" class="work-item" data-cat="culture">
-      <div class="work-thumb">
-        <div class="thumb-fill fill-12">
-          <div class="thumb-label">
-            <div class="thumb-brand">JANGDO</div>
-            <div class="thumb-sub">Craft Museum</div>
-          </div>
-        </div>
-      </div>
-      <div class="work-meta">
-        <div class="cat">Culture / Museum</div>
-        <div class="title">장도 — 공예 뮤지엄 아이덴티티</div>
+        <div class="category-tag">Brand</div>
+        <div class="title-en">AMUSE Rebranding</div>
+        <div class="title-kr">어뮤즈 리브랜딩</div>
+        <div class="desc">서울의 뷰티를 기반으로 한 어뮤즈 리브랜딩에 있어 브랜드 가치체계 수립, 비주얼 디렉팅</div>
       </div>
     </a>
 
@@ -471,34 +534,56 @@
   </footer>
 
   <script>
-    const items = document.querySelectorAll('.work-item');
+    // ─── Image slider ───
+    document.querySelectorAll('.slide-wrap').forEach(wrap => {
+      const slides = wrap.querySelectorAll('.slide');
+      if (slides.length <= 1) return;
+      let i = 0;
+      setInterval(() => {
+        slides[i].classList.remove('active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('active');
+      }, 3500);
+    });
+
+    // ─── Category filter ───
     const btns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.work-item');
     const countEl = document.getElementById('count');
 
     function updateCount() {
       const visible = document.querySelectorAll('.work-item:not(.hidden)').length;
-      countEl.textContent = visible + ' projects';
+      countEl.textContent = visible + ' Projects';
     }
 
-    updateCount();
+    function applyFilter(filter) {
+      btns.forEach(b => b.classList.remove('active'));
+      document.querySelector(`.filter-btn[data-filter="${filter}"]`).classList.add('active');
+
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      updateCount();
+
+      // URL 업데이트 (탭마다 고유 링크)
+      const url = filter === 'all'
+        ? window.location.pathname
+        : window.location.pathname + '?category=' + filter;
+      history.replaceState(null, '', url);
+    }
 
     btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const f = btn.dataset.filter;
-        items.forEach(item => {
-          if (f === 'all' || item.dataset.cat === f) {
-            item.classList.remove('hidden');
-          } else {
-            item.classList.add('hidden');
-          }
-        });
-
-        updateCount();
-      });
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
     });
+
+    // 초기 로드 시 URL 파라미터 적용
+    const initCategory = new URLSearchParams(window.location.search).get('category');
+    applyFilter(initCategory && ['space', 'brand'].includes(initCategory) ? initCategory : 'all');
   </script>
 
 </body>
